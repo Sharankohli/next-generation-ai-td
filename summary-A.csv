@@ -1,0 +1,2 @@
+provider,model_id,public_index,index_date,index_source,paid_route_same_model,input_usd_per_million,output_usd_per_million,price_date,price_source,access_used,period_results,age_results,product_results,combined_results,trace_files,limits
+groq,openai/gpt-oss-120b,11.6,2026-09-28,portefeuille-modeles-2026-09-28.csv,OpenRouter,0.15,0.60,2026-09-28,portefeuille-modeles-2026-09-28.csv,Groq Free API,6/6,5/5,1/1,8/8,traces-A.csv; state-A.jsonl,Free-tier rate limits apply; remaining quota not recorded
