@@ -1,0 +1,21 @@
+case_id,model_id,trace_file,cell_id,nature,status,value_cents,reference_cents,explanation
+C01,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C01,real,correct,792800,792800,Matches the reference.
+C02,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C02,real,incorrect,135000,590320,"Wrong convention (completed age): read 'exactly 25 on the reference date' as birth_date = 2001-09-25, i.e. only people whose birthday is that day, instead of the whole birth-date range for age 25."
+C03,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C03,real,correct,936350,936350,Matches the reference.
+C04,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C04,real,correct,2826250,2826250,Matches the reference.
+C05,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C05,real,correct,38480,38480,Matches the reference.
+C06,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C06,real,correct,0,0,Matches the reference.
+C07,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C07,real,correct,13970,13970,Matches the reference.
+C08,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C08,real,sql_rejected,,605580,"Output format: SQL returned inside a markdown code fence; sandbox rejected it (not_select), so no value was produced. Convention not tested."
+C09,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C09,real,incorrect,0,487980,"Wrong convention (completed age): month/day conditions contradict each other (month<9 or =9/day<=26, AND month>9 or =9/day>26), so no row matches and the sum is 0."
+C10,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C10,real,incorrect,119410,558980,Wrong convention (completed age at order time): only year difference = 25 with birthday passed; misses year difference 26 with birthday not yet reached. Value too low.
+C11,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C11,real,sql_rejected,,446690,"Output format: SQL returned inside a markdown code fence; sandbox rejected it (not_select), so no value was produced. Convention not tested."
+C12,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C12,real,correct,1666490,1666490,Matches the reference.
+C13,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C13,real,correct,107740,107740,Matches the reference.
+C14,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C14,real,correct,0,0,Matches the reference.
+C15,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C15,real,correct,168680,168680,Matches the reference.
+C16,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C16,real,correct,376740,376740,Matches the reference.
+C17,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C17,real,incorrect,822540,258180,"Wrong convention (completed age): condition means age 25 or older on 2026-09-25 with no lower bound, so older customers are included. Value too high."
+C18,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C18,real,incorrect,39580,62480,Wrong convention (completed age at order time): only year difference = 25 with birthday passed; misses year difference 26 with birthday not yet reached. Value too low.
+C19,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C19,real,incorrect,71640,1990,"Wrong convention (completed age): age window is built from the year difference, so it is true for every customer and age 25 is never enforced. Value too high."
+C20,dots-studio/dots-3-note-preview:free,traces-E.csv,openrouter:dots-studio/dots-3-note-preview:free:C20,real,correct,1106090,1106090,Matches the reference.
