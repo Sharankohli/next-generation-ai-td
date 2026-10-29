@@ -6,6 +6,16 @@ Kit of 14 October 2026 for the three sessions of 21 October, 18 November and
 11 December. The database and the twenty questions are the same for every
 sub-group. Read the environment guide first and finish preparation by 18 October inclusive; each assignment gives the schedule of its afternoon.
 
+   ## Team: DIA 1, subgroup 4
+
+   | Full name | GitHub username |
+   |---|---|
+   | Youssef DAMAK | JoeDmk |
+   | Haoyu SONG | Co1d3r |
+   | Sharan Raj JANAKIRAMAN | Sharankohli |
+   | Zinyu ZHU | xinyuzhu-ai |
+   | Eliott PALETHORPE | eliottpalethorpe |
+   | Ismael CHARNI | IsmaLeThug |
 ## Before the first session
 
 | File | Role |
