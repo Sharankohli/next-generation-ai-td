@@ -9,7 +9,7 @@ Public repository shared from TD 1 to TD 3. Each session has its own folder, wit
 | Youssef DAMAK | JoeDmk |
 | Haoyu SONG | Co1d3r |
 | Sharan Raj JANAKIRAMAN | Sharankohli |
-| Zinyu ZHU | xinyuzhu-ai |
+| Xinyu ZHU | xinyuzhu-ai |
 | Eliott PALETHORPE | eliottpalethorpe |
 | Ismael CHARNI | IsmaLeThug |
 

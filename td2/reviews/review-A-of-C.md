@@ -1,6 +1,6 @@
 # Review of Pair C's work, by Pair A
 
-Reviewer: Pair A (Youssef Damak, Eliott Palethorpe). Reviewed: Pair C (Zinyu Zhu, Ismael Charni), step 3, the routing rule. Commit reviewed: `024b2d4`. The checks were run on Youssef's machine with Claude's help.
+Reviewer: Pair A (Youssef Damak, Eliott Palethorpe). Reviewed: Pair C (Xinyu Zhu, Ismael Charni), step 3, the routing rule. Commit reviewed: `024b2d4`. The checks were run on Youssef's machine with Claude's help.
 
 ## What we checked and how
 

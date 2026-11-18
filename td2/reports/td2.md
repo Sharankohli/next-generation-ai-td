@@ -263,7 +263,7 @@ Unchanged since TD 1. The prompt in `skeleton-multi-llm-en.py` is identical to t
 | A | Eliott Palethorpe (eliottpalethorpe) | Member of Pair A; no commit under this name in TD 2 |
 | B | Haoyu Song (Co1d3r) | C09 analysis, delta query, evidence script (pushed it) |
 | B | Sharan Raj Janakiraman (Sharankohli) | Member of Pair B; no commit under this name in TD 2 |
-| C | Zinyu Zhu (xinyuzhu-ai) | Routing rule, adapted simulator, tests, priority analysis (pushed it) |
+| C | Xinyu Zhu (xinyuzhu-ai) | Routing rule, adapted simulator, tests, priority analysis (pushed it) |
 | C | Ismael Charni (IsmaLeThug) | Member of Pair C; no commit under this name in TD 2 |
 
 The commit history shows who pushed; it does not show who worked on what inside a pair.
@@ -295,4 +295,3 @@ Changes made because of the reviews:
 - **Step 1 table** now has one column per panel saying whether the decision equals the reference, or abstains (finding of Pair C).
 - **Evidence script of Pair B** writes its own file and runs on Windows (finding of Pair A).
 - **Not done:** Pair B's review of Pair A mentions a script `scripts/vote-table.py` that is not in the repository at the time of writing; it has to be pushed by Pair B or removed from their review.
-- **Open question:** the spelling of Pair C's member name (Zinyu or Xinyu Zhu) has to be confirmed by the member.
