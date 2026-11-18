@@ -1,0 +1,4 @@
+# Keep the shop data byte-for-byte identical on every machine (the SHA-256 checks depend on it)
+td1/data/*.csv -text
+td1/data/*.sqlite binary
+td1/schema.sql -text

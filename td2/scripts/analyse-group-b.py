@@ -7,13 +7,14 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+TD1 = ROOT.parent / 'td1'
 OUT = ROOT / 'reports/group-b'
 OUT.mkdir(parents=True, exist_ok=True)
 latest = {}
-for path in [ROOT / 'traces-td1.csv']:
+for path in [TD1 / 'traces-td1.csv']:
     for record in csv.DictReader(path.open(encoding='utf-8-sig')):
         latest[record['case_id'], record['provider'], record['model_requested']] = dict(record, source=path.name)
-refs = {r['case_id']: r for r in csv.DictReader((ROOT/'reference-td1.csv').open())}
+refs = {r['case_id']: r for r in csv.DictReader((TD1/'reference-td1.csv').open())}
 shared = []
 for case in sorted(refs):
     groups = defaultdict(list)
@@ -22,7 +23,7 @@ for case in sorted(refs):
             groups[r['value']].append(r['model_requested'])
     shared.extend({'case': case, 'value': value, 'models': models} for value, models in groups.items() if len(models) >= 2)
 rows = [r for (case, _, _), r in latest.items() if case == 'C09']
-con = sqlite3.connect(f'file:{ROOT / "data/boutique.sqlite"}?mode=ro', uri=True)
+con = sqlite3.connect(f'file:{TD1 / "data/boutique.sqlite"}?mode=ro', uri=True)
 ref = refs['C09']
 expected = int(ref['revenue_cents'])
 assert con.execute(ref['sql']).fetchone()[0] == expected
@@ -57,7 +58,7 @@ def count(panel, k):
     value, votes = counts.most_common(1)[0]
     return {'n': len(panel), 'k': k, 'consensus': votes >= k, 'value': value if votes >= k else None, 'votes': votes}
 votes = {'2-of-3': count([r for r in rows if r['model_requested'] in fixed],2), '3-of-5':count(rows,3)}
-evidence = {'latest_cells':len(latest),'selection':'Last CSV row per case/provider/model, matching atelier-vote.py; repeats are not extra votes.','shared_wrong_cases':shared,'reference_cents':expected,'database_sha256':hashlib.sha256((ROOT/'data/boutique.sqlite').read_bytes()).hexdigest(),'C09':rows,'manual_quorum_counts':votes,'delta_rows':delta,'delta_sum':sum(r[2] for r in delta),'checks':'All five stored C09 SQL outputs reproduced; saved reference reproduced; independent age arithmetic agrees; exact omitted-row query for each of the two zero-valued SQL statements returns the same six customers.'}
+evidence = {'latest_cells':len(latest),'selection':'Last CSV row per case/provider/model, matching atelier-vote.py; repeats are not extra votes.','shared_wrong_cases':shared,'reference_cents':expected,'database_sha256':hashlib.sha256((TD1/'data/boutique.sqlite').read_bytes()).hexdigest(),'C09':rows,'manual_quorum_counts':votes,'delta_rows':delta,'delta_sum':sum(r[2] for r in delta),'checks':'All five stored C09 SQL outputs reproduced; saved reference reproduced; independent age arithmetic agrees; exact omitted-row query for each of the two zero-valued SQL statements returns the same six customers.'}
 (OUT/'c09-results.json').write_text(json.dumps(evidence,indent=2)+'\n')
 report = '''# TD2 — Group B: a wrong consensus on C09
 
@@ -114,7 +115,7 @@ report += f'''
 
 Two models can agree on a wrong value even when their SQL mistakes differ. Here the fixed 2-of-3 panel returns the correct value, while the 3-of-5 quorum abstains. The shared wrong value is not a winning majority under either declared panel. Customer-visible or payout amounts therefore need an independent deterministic check of the age predicate and revenue calculation; a larger quorum alone is insufficient evidence of correctness. This single observed case does not establish a general quorum error rate.
 
-Reproduce with `python3 scripts/analyse-group-b.py` from the repository root. This uses Python's standard library and opens SQLite read-only. Evidence: [SQL](group-b/c09-diagnostic.sql), [exact rows](group-b/c09-delta.csv), [recorded inputs and checks](group-b/c09-results.json). Group A should cross-check the declared quorum results with its completed method during internal review. Group C's routing rule and Group A's 20-question table are outside this Group B report. Member names and the team's final combined review remain to be supplied by the team.
+Reproduce with `python3 scripts/analyse-group-b.py` from the `td2` folder. This uses Python's standard library and opens SQLite read-only. Evidence: [SQL](group-b/c09-diagnostic.sql), [exact rows](group-b/c09-delta.csv), [recorded inputs and checks](group-b/c09-results.json). Group A should cross-check the declared quorum results with its completed method during internal review. Group C's routing rule and Group A's 20-question table are outside this Group B report. Member names and the team's final combined review remain to be supplied by the team.
 '''
 (ROOT/'reports/td2.md').write_text('\n'.join(line.rstrip() for line in report.splitlines())+'\n')
 query_path = OUT/'c09-diagnostic.sql'
