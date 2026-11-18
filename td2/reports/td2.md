@@ -260,17 +260,19 @@ Unchanged since TD 1. The prompt in `skeleton-multi-llm-en.py` is identical to t
 | Pair | Member (GitHub) | Contribution |
 |---|---|---|
 | A | Youssef Damak (JoeDmk) | `vote_k_sur_n`, tests, 20-question table, repo split into `td1`/`td2`/`td3`, READMEs, assembly of this report |
-| A | second member: TO CONFIRM | |
+| A | Eliott Palethorpe (eliottpalethorpe) | Member of Pair A; no commit under this name in TD 2 |
 | B | Haoyu Song (Co1d3r) | C09 analysis, delta query, evidence script (pushed it) |
-| B | second member: TO CONFIRM | |
+| B | Sharan Raj Janakiraman (Sharankohli) | Member of Pair B; no commit under this name in TD 2 |
 | C | Zinyu Zhu (xinyuzhu-ai) | Routing rule, adapted simulator, tests, priority analysis (pushed it) |
-| C | second member: TO CONFIRM | |
+| C | Ismael Charni (IsmaLeThug) | Member of Pair C; no commit under this name in TD 2 |
 
-The pairs have to fill in the second member of each pair and anything else they did before hand-in.
+The commit history shows who pushed; it does not show who worked on what inside a pair.
 
 ## 11. AI assistance
 
-Pair A used Claude (AI assistant) for the tests-first implementation of `vote_k_sur_n`, for computing the table from the stored traces, for the repo restructure, and to draft and assemble this report. Youssef ran the tests and the commands and must be able to explain the code. Pairs B and C: TO CONFIRM.
+The sub-group used AI assistance at a moderate to fairly high level in this session.
+
+Pair A, in detail: Claude (AI assistant) wrote the tests-first implementation of `vote_k_sur_n`, computed the 20-question table from the stored traces, did the repo restructure, and drafted and assembled this report. Youssef ran the tests and the commands, and the team reviews the result before hand-in. Pairs B and C do not itemise their own use here.
 
 ## 12. Next steps (TD 3)
 
