@@ -52,7 +52,7 @@ Agreement with the reference: **2-of-3 reaches a consensus on 17 questions and a
 - **C20 and C17:** qwen got a 429 (`not_executed`). On C20 the 2-of-3 still wins with 120b and cohere (2 of 2 needed), since the missing member stays in n=3 but k=2 is still reachable. On C17 the same missing qwen leaves 2-of-3 with only 120b correct (cohere returned 197080), so it abstains with 1 vote. The 3-of-5 also abstains on C17: 120b and 20b agree on 258180 (2 votes), dots returns 822540, so 2 < 3.
 - **C10 and C19:** 120b is correct on both, but alone. On C10 qwen returns 119410, cohere 0, so 2-of-3 abstains. 3-of-5 abstains too (558980 x2 vs 119410 x2, qwen and dots). On C19 qwen 83580, cohere 13930, dots 71640, so all three are scattered and only 120b and 20b agree on 1990, which is 2 < 3. Abstaining is the right behaviour here: the vote cannot tell which lone answer is the correct one.
 
-## Wrong values shared by two models (to hand to Pair B)
+## Wrong values shared by two models (C09 is analysed in section 3)
 
 These never reached k in either vote, but they are shared wrong values:
 - **C09:** cohere and dots both return 0 (reference 487980).
