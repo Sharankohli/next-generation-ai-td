@@ -624,7 +624,34 @@ class Orchestrateur:
         families, and look in your traces for a case where several models agree
         on a wrong value.
         """
-        raise NotImplementedError("vote_k_sur_n: to implement in TD 2 (see the procedure in the docstring).")
+        n = len(traces_question)
+        # Rule 2: k is a strict majority of the panel size, unavailable members included.
+        if not (n // 2 < k <= n):
+            raise ValueError(f"k must satisfy n // 2 < k <= n (n={n}, k={k})")
+
+        # Rule 3: one proposal per (provider, model_requested). A duplicate is not a second vote.
+        seen = set()
+        for p in traces_question:
+            member = (p.provider, p.model_requested)
+            if member in seen:
+                raise ValueError(f"duplicate proposal from {p.provider}:{p.model_requested}")
+            seen.add(member)
+
+        # Rule 1: only executed proposals that carry a value vote. `is not None` keeps 0 as a real value.
+        ballots = {}
+        for p in traces_question:
+            if p.verdict == "executed" and p.value is not None:
+                ballots.setdefault(p.value, []).append(f"{p.provider}:{p.model_requested}")
+
+        best_count = max((len(m) for m in ballots.values()), default=0)
+
+        # Rule 4: a value with k votes wins. Since 2k > n, two values cannot both reach k.
+        for value, models in ballots.items():
+            if len(models) >= k:
+                return {"consensus": True, "value": value, "votes": len(models), "models": models}
+
+        # Rule 5: no value reaches k, so abstain. Never invent a value.
+        return {"consensus": False, "value": None, "votes": best_count, "models": []}
 
 
 # ==========================================================================
