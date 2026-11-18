@@ -21,6 +21,10 @@ Public repository shared from TD 1 to TD 3. Each session has its own folder, wit
 | [td2](td2/README.md) | 18 November 2026: the k-of-n vote, then the routing rule | Skeleton with `vote_k_sur_n`, vote and routing workshops, tests, wrong-consensus evidence | [td2/reports/td2.md](td2/reports/td2.md) |
 | [td3](td3/README.md) | 11 December 2026: cost of each configuration and the choice for a use case | Assignment (work to come) | to come |
 
+## Routing policies
+
+Which model runs first for each kind of question, how its answer is checked (dashboard, customer figure, payout) and the fallback: see [td2/README.md#routing-policies](td2/README.md#routing-policies), with the full rule in [td2/reports/group-c/routing-rule.md](td2/reports/group-c/routing-rule.md).
+
 ## Reading order
 
 1. `td1/`: where the data and the stored traces come from.
