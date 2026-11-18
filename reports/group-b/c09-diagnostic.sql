@@ -24,7 +24,7 @@ SELECT COALESCE(SUM(o.quantity_product * p.price), 0) AS revenue_cents
 FROM orders o
 JOIN customers c ON o.customer_id = c.customer_id
 JOIN product p ON o.product_id = p.product_id
-WHERE 
+WHERE
     (c.birth_date IS NOT NULL)
     AND (
         CAST(strftime('%Y', '2026-09-26') AS INTEGER) - CAST(strftime('%Y', c.birth_date) AS INTEGER) = 25

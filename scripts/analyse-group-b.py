@@ -42,7 +42,7 @@ cur = con.execute(base)
 delta = cur.fetchall()
 assert sum(r[2] for r in delta) == expected
 with (OUT/'c09-delta.csv').open('w') as f:
-    writer = csv.writer(f); writer.writerow([d[0] for d in cur.description]); writer.writerows(delta)
+    writer = csv.writer(f, lineterminator="\n"); writer.writerow([d[0] for d in cur.description]); writer.writerows(delta)
 wrong = [r for r in rows if r['value'] == '0']
 queries = []
 for row in wrong:
@@ -116,5 +116,7 @@ Two models can agree on a wrong value even when their SQL mistakes differ. Here 
 
 Reproduce with `python3 scripts/analyse-group-b.py` from the repository root. This uses Python's standard library and opens SQLite read-only. Evidence: [SQL](group-b/c09-diagnostic.sql), [exact rows](group-b/c09-delta.csv), [recorded inputs and checks](group-b/c09-results.json). Group A should cross-check the declared quorum results with its completed method during internal review. Group C's routing rule and Group A's 20-question table are outside this Group B report. Member names and the team's final combined review remain to be supplied by the team.
 '''
-(ROOT/'reports/td2.md').write_text(report)
+(ROOT/'reports/td2.md').write_text('\n'.join(line.rstrip() for line in report.splitlines())+'\n')
+query_path = OUT/'c09-diagnostic.sql'
+query_path.write_text('\n'.join(line.rstrip() for line in query_path.read_text().splitlines())+'\n')
 print(json.dumps({'cells':len(latest),'shared':shared,'votes':votes,'delta':delta,'total':expected},indent=2))
