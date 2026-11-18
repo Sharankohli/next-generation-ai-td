@@ -279,3 +279,7 @@ Pair A, in detail: Claude (AI assistant) wrote the tests-first implementation of
 - Put a cost on each configuration: single model, 2-of-3, 3-of-5, reference check, review. Use the token counts in the TD 1 traces and the dated prices of the portfolio.
 - Questions that no free model handles alone are where checking costs matter most: the age-at-a-date family and every combination that includes age.
 - Run the cross-review: each member explains the other two steps back, and the corrections go into a second commit.
+
+## 13. Cross-review
+
+Each pair reviews the other two, six reviews in all, in [../reviews/](../reviews/). Pair A's are done: [A reviews B](../reviews/review-A-of-B.md) and [A reviews C](../reviews/review-A-of-C.md). The other four are written by their reviewers: B reviews A, B reviews C, C reviews A and C reviews B. Change made after Pair A's reviews: the evidence script of Pair B now writes its own file and runs on Windows.
