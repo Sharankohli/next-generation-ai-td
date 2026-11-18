@@ -25,28 +25,28 @@ Sub-group 4 (DIA 1), session of 18 November 2026. Everything here comes from the
 
 2-of-3 panel (k = 2): gpt-oss-120b, cohere north-mini-code, qwen3.8-27b. 3-of-5 (k = 3): those three plus gpt-oss-20b and dots-3-note-preview. Values in cents excl. VAT. "votes" is the size of the winning group, or the biggest group when it abstains.
 
-| Q | Reference | 2-of-3 | 3-of-5 | Same decision? |
-|---|---|---|---|---|
-| C01 | 792800 | 792800 (3 votes) | 792800 (5) | yes |
-| C02 | 590320 | 590320 (2) | abstain (2) | **no** |
-| C03 | 936350 | 936350 (3) | 936350 (5) | yes |
-| C04 | 2826250 | 2826250 (3) | 2826250 (5) | yes |
-| C05 | 38480 | 38480 (3) | 38480 (5) | yes |
-| C06 | 0 | 0 (3) | 0 (5) | yes |
-| C07 | 13970 | 13970 (3) | 13970 (5) | yes |
-| C08 | 605580 | 605580 (2) | 605580 (3) | yes |
-| C09 | 487980 | 487980 (2) | abstain (2) | **no** |
-| C10 | 558980 | abstain (1) | abstain (2) | yes, both abstain |
-| C11 | 446690 | 446690 (2) | 446690 (3) | yes |
-| C12 | 1666490 | 1666490 (3) | 1666490 (5) | yes |
-| C13 | 107740 | 107740 (3) | 107740 (5) | yes |
-| C14 | 0 | 0 (3) | 0 (5) | yes |
-| C15 | 168680 | 168680 (2) | 168680 (4) | yes |
-| C16 | 376740 | 376740 (2) | 376740 (4) | yes |
-| C17 | 258180 | abstain (1) | abstain (2) | yes, both abstain |
-| C18 | 62480 | 62480 (3) | 62480 (4) | yes |
-| C19 | 1990 | abstain (1) | abstain (2) | yes, both abstain |
-| C20 | 1106090 | 1106090 (2) | 1106090 (4) | yes |
+| Q | Reference | 2-of-3 | 3-of-5 | Same decision? | 2-of-3 = reference? | 3-of-5 = reference? |
+|---|---|---|---|---|---|---|
+| C01 | 792800 | 792800 (3 votes) | 792800 (5) | yes | yes | yes |
+| C02 | 590320 | 590320 (2) | abstain (2) | **no** | yes | abstains |
+| C03 | 936350 | 936350 (3) | 936350 (5) | yes | yes | yes |
+| C04 | 2826250 | 2826250 (3) | 2826250 (5) | yes | yes | yes |
+| C05 | 38480 | 38480 (3) | 38480 (5) | yes | yes | yes |
+| C06 | 0 | 0 (3) | 0 (5) | yes | yes | yes |
+| C07 | 13970 | 13970 (3) | 13970 (5) | yes | yes | yes |
+| C08 | 605580 | 605580 (2) | 605580 (3) | yes | yes | yes |
+| C09 | 487980 | 487980 (2) | abstain (2) | **no** | yes | abstains |
+| C10 | 558980 | abstain (1) | abstain (2) | yes, both abstain | abstains | abstains |
+| C11 | 446690 | 446690 (2) | 446690 (3) | yes | yes | yes |
+| C12 | 1666490 | 1666490 (3) | 1666490 (5) | yes | yes | yes |
+| C13 | 107740 | 107740 (3) | 107740 (5) | yes | yes | yes |
+| C14 | 0 | 0 (3) | 0 (5) | yes | yes | yes |
+| C15 | 168680 | 168680 (2) | 168680 (4) | yes | yes | yes |
+| C16 | 376740 | 376740 (2) | 376740 (4) | yes | yes | yes |
+| C17 | 258180 | abstain (1) | abstain (2) | yes, both abstain | abstains | abstains |
+| C18 | 62480 | 62480 (3) | 62480 (4) | yes | yes | yes |
+| C19 | 1990 | abstain (1) | abstain (2) | yes, both abstain | abstains | abstains |
+| C20 | 1106090 | 1106090 (2) | 1106090 (4) | yes | yes | yes |
 
 Agreement with the reference: **2-of-3 reaches a consensus on 17 questions and all 17 equal the reference, it abstains on 3 (C10, C17, C19). 3-of-5 reaches a consensus on 15 and all 15 equal the reference, it abstains on 5 (C02, C09, C10, C17, C19).** Neither vote returned a wrong value on these traces.
 
@@ -68,7 +68,7 @@ These never reached k in either vote, but they are shared wrong values:
 - **C09:** cohere and dots both return 0 (reference 487980).
 - **C10:** qwen and dots both return 119410 (reference 558980).
 
-A 2-of-5 vote would have made both a wrong consensus. This is the argument for k > half, and for keeping the fixed panel to models that are not in the same family.
+With k = 2 out of 5 (not a strict majority, so our vote refuses it) each of these would be a tie between a right and a wrong value, not a wrong consensus: on C09 487980 x2 against 0 x2, on C10 558980 x2 against 119410 x2. A tie that could go either way is exactly why k must be a strict majority. This is the argument for k > half, and for keeping the fixed panel to models that are not in the same family.
 
 ### Limits
 
@@ -282,4 +282,17 @@ Pair A, in detail: Claude (AI assistant) wrote the tests-first implementation of
 
 ## 13. Cross-review
 
-Each pair reviews the other two, six reviews in all, in [../reviews/](../reviews/). Pair A's are done: [A reviews B](../reviews/review-A-of-B.md) and [A reviews C](../reviews/review-A-of-C.md). Pair C's reviews are now available: [C reviews A](../reviews/review-C-of-A.md) and [C reviews B](../reviews/review-C-of-B.md). The other two are B's reviews of A and C. Change made after Pair A's reviews: the evidence script of Pair B now writes its own file and runs on Windows.
+Each pair reviewed the other two: six reviews in [../reviews/](../reviews/).
+
+| Reviewer | Reviewed B | Reviewed C | Reviewed A |
+|---|---|---|---|
+| Pair A | [review](../reviews/review-A-of-B.md) | [review](../reviews/review-A-of-C.md) | |
+| Pair B | | [review](../reviews/review-B-of-C.md) | [review](../reviews/review-B-of-A.md) |
+| Pair C | [review](../reviews/review-C-of-B.md) | | [review](../reviews/review-C-of-A.md) |
+
+Changes made because of the reviews:
+- **Step 1 text corrected** (finding of Pair B): a 2-of-5 vote on C09 and C10 would be a tie between a right and a wrong value, not a wrong consensus (section 2, last part).
+- **Step 1 table** now has one column per panel saying whether the decision equals the reference, or abstains (finding of Pair C).
+- **Evidence script of Pair B** writes its own file and runs on Windows (finding of Pair A).
+- **Not done:** Pair B's review of Pair A mentions a script `scripts/vote-table.py` that is not in the repository at the time of writing; it has to be pushed by Pair B or removed from their review.
+- **Open question:** the spelling of Pair C's member name (Zinyu or Xinyu Zhu) has to be confirmed by the member.
